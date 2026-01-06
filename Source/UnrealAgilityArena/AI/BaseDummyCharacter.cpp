@@ -50,6 +50,7 @@ void ABaseDummyCharacter::BeginPlay()
 	BatteryLevel = FMath::RandRange(0.f, MaxBatteryLevel);
 	OnBatteryStatusChanged.Broadcast(GetBatteryStatus());
 	
+	// Print Debug
 	float Level = BatteryLevel / MaxBatteryLevel;
 	UE_LOG(LogTemp, Warning, TEXT("BatteryLevel: %f"), BatteryLevel);
 	UE_LOG(LogTemp, Warning, TEXT("BatteryLevel / MaxBatteryLevel: %f"), Level);
@@ -60,14 +61,34 @@ void ABaseDummyCharacter::BeginPlay()
 void ABaseDummyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
+	const EBatteryStatus CurrentStatus = GetBatteryStatus();
+	if (GetMovementComponent() -> Velocity.Size() > 0.1f)
+	{
+		BatteryLevel -= BatteryCostPerTick;
+	} else
+	{
+		BatteryLevel += BatteryRechargePerTick;
+	}
+	BatteryLevel = FMath::Clamp(BatteryLevel, 0.f, MaxBatteryLevel);
+	if (const EBatteryStatus NewStatus = GetBatteryStatus(); CurrentStatus != NewStatus)
+	{
+		OnBatteryStatusChanged.Broadcast(NewStatus);
+	}
+	
 }
 
+// Set MaxWalkSpeed of CharacterMovementComponent
 void ABaseDummyCharacter::SetWalkSpeed()
 {
+	const float Deviation = FMath::RandRange(-1.f * MovementRandomDeviation, MovementRandomDeviation);
+	GetCharacterMovement() -> MaxWalkSpeed = WalkSpeed + Deviation;
 }
 
 void ABaseDummyCharacter::SetRunSpeed()
 {
+	const float Deviation = FMath::RandRange(-1.f * MovementRandomDeviation, MovementRandomDeviation);
+	GetCharacterMovement() -> MaxWalkSpeed = RunSpeed + Deviation;
 }
 
 EBatteryStatus ABaseDummyCharacter::GetBatteryStatus() const
