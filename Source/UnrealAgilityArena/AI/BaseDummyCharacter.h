@@ -29,7 +29,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character Battery")
 	float MaxBatteryLevel = 100.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character Battery")
-	float BatteryCostPerTick = 5.f;
+	float BatteryCostPerTick = 2.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character Battery")
 	float BatteryRechargePerTick = 1.f;
 	

@@ -76,7 +76,7 @@ void ABaseDummyCharacter::Tick(float DeltaTime)
 		OnBatteryStatusChanged.Broadcast(NewStatus);
 	}
 	
-	if (GEngine) GEngine -> AddOnScreenDebugMessage(-1, 1, FColor::White, FString::Printf(TEXT("Battery Status: %d"), GetBatteryStatus()));
+	if (GEngine) GEngine -> AddOnScreenDebugMessage(-1, 0.25f, FColor::White, FString::Printf(TEXT("Battery Status: %d"), GetBatteryStatus()));
 }
 
 /*
