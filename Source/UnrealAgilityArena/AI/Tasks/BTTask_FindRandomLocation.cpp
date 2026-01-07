@@ -22,9 +22,5 @@ EBTNodeResult::Type UBTTask_FindRandomLocation::ExecuteTask(UBehaviorTreeCompone
 	const AActor* RandomTarget = TargetList[FMath::RandRange(0, TargetList.Num() - 1)];
 	BlackboardComp -> SetValueAsVector(BlackboardKey.SelectedKeyName, RandomTarget->GetActorLocation());
 	
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Number of target: %d"), TargetList.Num())
-);
-	
-	
 	return EBTNodeResult::Succeeded;
 }
