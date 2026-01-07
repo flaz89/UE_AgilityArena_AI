@@ -3,7 +3,7 @@
 
 #include "UnrealAgilityArena/AI/AI_Controller/BaseDummyAIController.h"
 
-inline void ABaseDummyAIController::OnPossess(APawn* InPawn)
+void ABaseDummyAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 	//if BehaviorTree exists (ensureMsgf) execute it
@@ -11,6 +11,5 @@ inline void ABaseDummyAIController::OnPossess(APawn* InPawn)
 	{
 		RunBehaviorTree(BehaviorTree);
 	}
-	
 }
 
