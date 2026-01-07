@@ -42,11 +42,10 @@ ABaseDummyCharacter::ABaseDummyCharacter()
 	GetCharacterMovement() -> bUseRVOAvoidance = true;
 }
 
-// Called when the game starts or when spawned
 void ABaseDummyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	// Set BatteryLevel with random value and call delegate (dispatch event)
 	BatteryLevel = FMath::RandRange(0.f, MaxBatteryLevel);
 	OnBatteryStatusChanged.Broadcast(GetBatteryStatus());
 	
@@ -62,6 +61,7 @@ void ABaseDummyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
+	// check BatteryLevel and update BatteryStatus with delegate (dispatch event)
 	const EBatteryStatus CurrentStatus = GetBatteryStatus();
 	if (GetMovementComponent() -> Velocity.Size() > 0.1f)
 	{
@@ -75,10 +75,11 @@ void ABaseDummyCharacter::Tick(float DeltaTime)
 	{
 		OnBatteryStatusChanged.Broadcast(NewStatus);
 	}
-	
 }
 
-// Set MaxWalkSpeed of CharacterMovementComponent
+/*
+  *Set MaxWalkSpeed of CharacterMovementComponent 
+*/
 void ABaseDummyCharacter::SetWalkSpeed()
 {
 	const float Deviation = FMath::RandRange(-1.f * MovementRandomDeviation, MovementRandomDeviation);
