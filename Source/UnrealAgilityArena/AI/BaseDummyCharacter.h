@@ -29,7 +29,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character Battery")
 	float MaxBatteryLevel = 100.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character Battery")
-	float BatteryCostPerTick = 2.f;
+	float BatteryCostPerTick = 5.f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Character Battery")
 	float BatteryRechargePerTick = 1.f;
 	
@@ -41,6 +41,7 @@ public:
 	float MovementRandomDeviation = 5.f;
 	
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnBatteryStatusChanged, EBatteryStatus, NewBatteryStatus);
+	
 	UPROPERTY(BlueprintAssignable, Category="Character Battery")
 	FOnBatteryStatusChanged OnBatteryStatusChanged;
 
