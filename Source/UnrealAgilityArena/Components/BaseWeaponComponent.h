@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(BlueprintType, Blueprintable, ClassGroup=("UnrealAgilityArena"), meta=(BlueprintSpawnableComponent))
+UCLASS(BlueprintType, Blueprintable, ClassGroup="UnrealAgilityArena", meta=(BlueprintSpawnableComponent))
 class UNREALAGILITYARENA_API UBaseWeaponComponent : public UStaticMeshComponent
 {
 	GENERATED_BODY()
@@ -24,11 +24,9 @@ public:
 	TSubclassOf<AActor> BulletClass;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Bullet")
-	FVector MuzzleOffset;
+	FVector MuzzleOffset = FVector(150.f, 30.f, 0.0f);
 	
 protected:
-	
 	virtual void BeginPlay() override;
 	
 };
-
