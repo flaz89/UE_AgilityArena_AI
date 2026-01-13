@@ -53,7 +53,7 @@ void ABaseDummyCharacter::BeginPlay()
 	float Level = BatteryLevel / MaxBatteryLevel;
 	UE_LOG(LogTemp, Warning, TEXT("BatteryLevel: %f"), BatteryLevel);
 	UE_LOG(LogTemp, Warning, TEXT("BatteryLevel / MaxBatteryLevel: %f"), Level);
-	UE_LOG(LogTemp, Warning, TEXT("BatteryLevel: %d"), GetBatteryStatus());
+	UE_LOG(LogTemp, Warning, TEXT("BatteryStatus: %d"), GetBatteryStatus());
 }
 
 // Called every frame
@@ -76,7 +76,7 @@ void ABaseDummyCharacter::Tick(float DeltaTime)
 		OnBatteryStatusChanged.Broadcast(NewStatus);
 	}
 	
-	if (GEngine) GEngine -> AddOnScreenDebugMessage(-1, 0.25f, FColor::White, FString::Printf(TEXT("Battery Status: %d"), GetBatteryStatus()));
+	//if (GEngine) GEngine -> AddOnScreenDebugMessage(-1, 0.25f, FColor::White, FString::Printf(TEXT("Battery Status: %d"), GetBatteryStatus()));
 }
 
 /*
