@@ -26,6 +26,7 @@ float ABaseTarget::TakeDamage(float DamageAmount, struct FDamageEvent const& Dam
 {
 	
 	Tags[0] = "Untagged";
+	Destroy();
 	return DamageAmount;
 }
 
