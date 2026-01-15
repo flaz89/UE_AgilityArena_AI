@@ -24,6 +24,9 @@ void UBaseWeaponComponent::Shoot()
 		FActorSpawnParameters BulletSpawnParams;
 		BulletSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 		
+		BulletSpawnParams.Owner = GetOwner();               
+		BulletSpawnParams.Instigator = Cast<APawn>(GetOwner());
+		
 		GetWorld()->SpawnActor<AActor>(BulletClass, SpawnLocation, SpawnRotation, BulletSpawnParams);
 	}
 }

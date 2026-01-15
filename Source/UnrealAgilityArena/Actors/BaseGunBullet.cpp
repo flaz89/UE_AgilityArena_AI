@@ -48,7 +48,10 @@ void ABaseGunBullet::Tick(float DeltaTime)
 void ABaseGunBullet::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& Hit)
 {
-	if (OtherActor && OtherActor != this) OtherActor->TakeDamage(1.f, FDamageEvent(),nullptr, nullptr);
+	if (OtherActor && OtherActor != this)
+	{
+		OtherActor->TakeDamage(1.f, FDamageEvent(),nullptr, nullptr);
+	}
 	Destroy();
 }
 

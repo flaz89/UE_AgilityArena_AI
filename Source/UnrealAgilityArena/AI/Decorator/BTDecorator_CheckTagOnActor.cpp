@@ -22,6 +22,13 @@ bool UBTDecorator_CheckTagOnActor::CalculateRawConditionValue(UBehaviorTreeCompo
 	
 	// return true if the variable of type AActor stored in Blackboard has a tag corresponding to TagName
 	const TObjectPtr<AActor> Actor = Cast<AActor>(BlackboardComponent->GetValue<UBlackboardKeyType_Object>(ActorToCheck.SelectedKeyName));
+	
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Orange, 
+			FString::Printf(TEXT("Checking target: %s at location: %s"), 
+				*GetNameSafe(Actor), 
+				Actor ? *Actor->GetActorLocation().ToString() : TEXT("N/A")));
+	
 	return Actor != nullptr && Actor->ActorHasTag(TagName);
 }
 
