@@ -38,7 +38,7 @@ void ABaseSecurityCamAIController::BeginPlay()
 void ABaseSecurityCamAIController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
-	if (ensure(UBehaviorTree, TEXT("Bheavior Tree in nullptr! Please assign BehaviorTree in your AI Controller")))
+	if (ensureMsgf(UBehaviorTree, TEXT("Bheavior Tree in nullptr! Please assign BehaviorTree in your AI Controller")))
 	{
 		RunBehaviorTree(UBehaviorTree);
 	}
@@ -54,11 +54,5 @@ void ABaseSecurityCamAIController::OnTargetPerceptionUpdate(AActor* Actor, FAISt
 		Actor->Tags.Init({}, 1);
 		Actor->Tags[0] = "ShootingTarget";
 	}
-}
-
-// Called every frame
-void ABaseSecurityCamAIController::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
 }
 

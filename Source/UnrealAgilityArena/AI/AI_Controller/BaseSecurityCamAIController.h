@@ -15,7 +15,6 @@ class UNREALAGILITYARENA_API ABaseSecurityCamAIController : public AAIController
 
 public:
 	ABaseSecurityCamAIController();
-	virtual void Tick(float DeltaTime) override;
 
 protected:
 	virtual void BeginPlay() override;

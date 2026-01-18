@@ -14,11 +14,14 @@ class UNREALAGILITYARENA_API ABaseDummyAIController : public AAIController
 {
 	GENERATED_BODY()
 	
-	protected:
-		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI Controller")
-		TObjectPtr<UBehaviorTree> BehaviorTree;
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI Controller")
+	TObjectPtr<UBehaviorTree> BehaviorTree;
+
+	virtual void OnPossess(APawn* InPawn) override;
 	
-		virtual void OnPossess(APawn* InPawn) override;
+	UFUNCTION()
+	void OnPawnDamaged( AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser );
 	
 };
 
