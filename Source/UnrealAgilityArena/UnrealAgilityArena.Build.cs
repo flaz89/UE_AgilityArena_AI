@@ -8,7 +8,7 @@ public class UnrealAgilityArena : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "GameplayStateTreeModule" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
