@@ -45,6 +45,10 @@
 		{
 			"Name": "ZoneGraph",
 			"Enabled": true
+		},
+		{
+			"Name": "GameplayBehaviorSmartObjects",
+			"Enabled": true
 		}
 	]
 }
