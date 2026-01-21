@@ -3,10 +3,6 @@
 
 #include "BaseTarget.h"
 
-#include <objc/runtime.h>
-
-#include "UObject/ObjectMacros.h"
-
 
 // Sets default values
 ABaseTarget::ABaseTarget()
